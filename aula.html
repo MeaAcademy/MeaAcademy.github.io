@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aula · MEA Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="pular" href="#secoes">Pular para o conteúdo</a>
+  <header class="topo">
+    <div class="topo-in">
+      <a class="marca" href="./"><span class="marca-logo">MEA</span><span>MEA Academy</span></a>
+      <div class="ferramentas" id="ferramentas"></div>
+    </div>
+    <div class="progresso" aria-hidden="true"></div>
+  </header>
+
+  <main>
+    <section class="capa" id="capa"></section>
+    <div class="aula">
+      <nav class="sumario" id="sumario" aria-label="Partes da aula"></nav>
+      <div id="secoes"></div>
+    </div>
+    <p class="fim"><a class="btn" href="./">← Ver todas as aulas</a></p>
+  </main>
+
+  <footer class="rodape">MEA Academy</footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    (async () => {
+      const id = new URLSearchParams(location.search).get("id");
+      if (id) await MEA.carregar([id]);
+      const aula = MEA.aulas[id];
+      if (!aula) { document.getElementById("secoes").innerHTML = '<p>Aula não encontrada. <a href="./">Voltar para o início</a>.</p>'; return; }
+      MEA.renderizarAula(aula);
+      MEA.montarFerramentas("#ferramentas", { estudo: true });
+    })();
+  </script>
+</body>
+</html>
