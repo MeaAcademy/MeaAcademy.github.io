@@ -268,8 +268,8 @@ body.modo-estudo .pt::after { content: ""; }
 .rodape { border-top: 1px solid var(--linha); padding: 26px 16px; text-align: center; color: var(--texto-suave); font-size: .9rem; }
 
 /* entrada suave das seções */
-.revela { opacity: 0; transform: translateY(14px); transition: opacity .5s, transform .5s; }
-.revela.visivel { opacity: 1; transform: none; }
+.revela { animation: entra .5s ease-out both; }
+@keyframes entra { from { opacity: .4; transform: translateY(8px); } }
 
 @media print {
   .topo, .sumario, .ouvir, .secao-rodape, .capa-acoes { display: none !important; }

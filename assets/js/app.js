@@ -194,8 +194,8 @@
         <p>${esc(aula.resumo)}</p>
         <div class="capa-acoes">
           <a class="btn btn-primario" href="#${esc(aula.secoes[0].id)}">Começar a aula ${MEA.icone("seta")}</a>
-          ${aula.pdf ? `<a class="btn" href="${esc(aula.pdf)}" download>${MEA.icone("pdf")}<span>Baixar PDF original</span></a>` : ""}
-          <button class="btn" type="button" onclick="print()">${MEA.icone("imprimir")}<span>Imprimir</span></button>
+          ${aula.pdf && !MEA.previa ? `<a class="btn" href="${esc(aula.pdf)}" download>${MEA.icone("pdf")}<span>Baixar PDF original</span></a>` : ""}
+          ${MEA.previa ? "" : `<button class="btn" type="button" onclick="print()">${MEA.icone("imprimir")}<span>Imprimir</span></button>`}
         </div>
       </div>`;
 
