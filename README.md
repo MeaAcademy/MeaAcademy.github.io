@@ -38,4 +38,6 @@ pdfs/                 PDFs originais
 
 ### Tipos de bloco disponíveis em uma aula
 `texto`, `chave`, `frases`, `cartoes` (estilos: `borda`, `barra`, `numerado`, `foto`, `miniatura`, `icone`),
-`dica`, `destaque`, `dialogo`, `papeis`, `passos` (estilo `linha`), `grafico`.
+`dica`, `destaque`, `dialogo`, `papeis`, `passos` (estilo `linha`), `grafico`,
+`pares`, `bilingue`, `alfabeto`, `palavras`, `citacoes` (cartões também aceitam os estilos `escuro` e `balao`).
+Cada seção aceita `rotulo`, `tituloPt`, `imagem` (foto lateral) e `banner` (foto no topo).

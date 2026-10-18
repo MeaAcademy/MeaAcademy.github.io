@@ -47,6 +47,17 @@
     voltar: P('<path d="M15 5 8 12l7 7"/>'),
     play: P('<circle cx="12" cy="12" r="9"/><path d="m10 8.5 5 3.5-5 3.5z"/>'),
     pdf: P('<path d="M6 3h9l4 4v14H6z"/><path d="M14.5 3v4.5H19M9 13h6M9 16.5h4"/>'),
+    cerebro: P('<path d="M9.5 4.5a3 3 0 0 0-5 2.2 3 3 0 0 0-1 5.3 3 3 0 0 0 2 4.8 3 3 0 0 0 4 2.7V4.5zM14.5 4.5a3 3 0 0 1 5 2.2 3 3 0 0 1 1 5.3 3 3 0 0 1-2 4.8 3 3 0 0 1-4 2.7V4.5z"/><path d="M9.5 4.5a2.5 2.5 0 0 1 5 0"/>'),
+    coracao: P('<path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.3 4.3 4.3 0 0 1 19.5 10C19.5 15.4 12 20 12 20z"/>'),
+    envelope: P('<rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="m3.5 6.5 8.5 7 8.5-7"/>'),
+    caixasom: P('<rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="14" r="3.2"/><circle cx="12" cy="7.3" r="1.2"/>'),
+    aperto: P('<path d="M2.5 11 6 7.5l3 1 3-2 4 .5 5.5 4M21.5 11l-3.5 3.5M2.5 11 7 15.5"/><path d="m9 12 2.5 2.5M11 10l3.5 3.5M7 15.5l1.5 1.5a1.4 1.4 0 0 0 2-2M10.5 15l1.5 1.5a1.4 1.4 0 0 0 2-2l.5.5a1.4 1.4 0 0 0 2-2"/>'),
+    nascer: P('<path d="M3 18h18M6.5 18a5.5 5.5 0 0 1 11 0M12 6v3M4.6 10.6l1.8 1.8M19.4 10.6l-1.8 1.8M7 21h10"/>'),
+    sol: P('<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/>'),
+    bussola: P('<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>'),
+    letras: P('<path d="M3 18 6.5 6 10 18M4.2 14h4.6M13 6h4a3 3 0 0 1 0 6h-4zM13 12h4.5a3 3 0 0 1 0 6H13z"/>'),
+    carta: P('<path d="M5 3h10l4 4v14H5z"/><path d="M8 9h8M8 12.5h8M8 16h5"/>'),
+    aspas: P('<path d="M4 17c0-5 1.5-8 5-10M4 17h4v-4H4zM13 17c0-5 1.5-8 5-10M13 17h4v-4h-4z"/>'),
     seta: P('<path d="M5 12h13M13 6l6 6-6 6"/>'),
   };
   MEA.icone = (n) => ICONES[n] || ICONES.nota;
@@ -122,7 +133,7 @@
   const botaoOuvir = (en) => `<button class="ouvir" type="button" data-falar="${esc(en)}" aria-label="Ouvir pronúncia: ${esc(en)}" title="Ouvir pronúncia">${MEA.icone("som")}</button>`;
   const frase = (it) => `
     <div class="frase-linha">
-      <div class="en-wrap"><p class="en" lang="en">${esc(it.en)}</p>
+      <div class="en-wrap"><p class="en" lang="en">${it.rotuloEn ? `<span class="rot-en">${esc(it.rotuloEn)}</span> ` : ""}${esc(it.en)}</p>
       ${it.pt ? `<span class="pt">${it.rotuloPt ? `<span class="rot">${esc(it.rotuloPt)}</span> ` : ""}${esc(it.pt)}</span>` : ""}</div>
       ${botaoOuvir(it.en)}
     </div>`;
@@ -133,7 +144,7 @@
     chave: (b) => `<div class="chave"><h3>${esc(b.titulo)}</h3><p>${esc(b.texto)}</p></div>`,
 
     frases: (b) => `<div class="frases ${b.estilo || ""}">
-      ${b.titulo ? `<h3>${esc(b.titulo)}</h3>` : ""}
+      ${b.titulo ? `<h3>${esc(b.titulo)}${b.tituloPt ? `<span class="titulo-pt">${esc(b.tituloPt)}</span>` : ""}</h3>` : ""}
       <ul>${b.itens.map((it) => b.estilo === "icones"
         ? `<li><span class="icone-bolha">${MEA.icone(it.icone)}</span><div>${it.titulo ? `<div class="tit">${esc(it.titulo)}</div>` : ""}${frase(it)}</div></li>`
         : `<li><div class="frase-linha"><div class="en-wrap"><span class="en" lang="en">${esc(it.en)}</span><span class="sep" aria-hidden="true">–</span><span class="pt">${esc(it.pt)}</span></div>${botaoOuvir(it.en)}</div></li>`).join("")}</ul></div>`,
@@ -144,6 +155,8 @@
         <div>
         ${it.icone ? `<span class="icone-bolha">${MEA.icone(it.icone)}</span>` : ""}
         ${it.titulo ? `<h3>${esc(it.titulo)}</h3>` : ""}
+        ${it.subtitulo ? `<p class="subtit">${esc(it.subtitulo)}</p>` : ""}
+        ${it.lista ? `<ul class="lista-falar">${it.lista.map((x) => `<li><span lang="en">${esc(x)}</span>${botaoOuvir(x)}</li>`).join("")}</ul>` : ""}
         ${it.texto ? `<p>${esc(it.texto)}</p>` : ""}
         ${it.en ? frase(it) : ""}
         ${it.nota ? `<p class="nota">${esc(it.nota)}</p>` : ""}
@@ -167,7 +180,27 @@
 
     passos: (b) => `<ol class="passos ${b.estilo || ""}">${b.itens.map((it, i) => `
       <li><span class="passo-n">${b.estilo === "linha" ? String(i + 1).padStart(2, "0") : i + 1}</span>
-      <div><h3>${esc(it.titulo)}</h3>${frase(it)}</div></li>`).join("")}</ol>`,
+      <div><h3>${esc(it.titulo)}</h3>${it.en ? frase(it) : ""}${it.forte ? `<p><strong>${esc(it.forte)}</strong></p>` : ""}${it.texto ? `<p>${esc(it.texto)}</p>` : ""}</div></li>`).join("")}</ol>`,
+
+    /* pares inglês/português, uma linha embaixo da outra */
+    pares: (b) => `<div class="pares ${b.forte ? "forte" : ""}">${b.titulo ? `<h3>${esc(b.titulo)}${b.tituloPt ? `<span class="titulo-pt">${esc(b.tituloPt)}</span>` : ""}</h3>` : ""}${b.itens.map((it) => it.en
+      ? `<div class="par">${frase(it)}</div>`
+      : `<p class="par-pt">${esc(it.pt)}</p>`).join("")}</div>`,
+
+    /* duas colunas: English | Português */
+    bilingue: (b) => `<div class="bilingue">
+      <div class="col" lang="en"><h3>English</h3>${b.en.map((t) => `<div class="frase-linha"><p class="en-wrap">${esc(t)}</p>${botaoOuvir(t)}</div>`).join("")}</div>
+      <div class="col"><h3>Português</h3>${b.pt.map((t) => `<p>${esc(t)}</p>`).join("")}</div></div>`,
+
+    alfabeto: (b) => `<ul class="alfabeto">${b.itens.map((x) => `
+      <li><button type="button" class="letra" data-falar="${esc(x.letra + ". " + x.palavra)}" aria-label="Ouvir ${esc(x.letra)}: ${esc(x.palavra)}">
+        <span class="l" lang="en">${esc(x.letra)}</span><span class="som">"${esc(x.som)}"</span>
+        <span class="pal"><span lang="en">${esc(x.palavra)}</span> <span class="pt">(${esc(x.pt)})</span></span></button></li>`).join("")}</ul>`,
+
+    palavras: (b) => `<ul class="palavras">${b.itens.map((w) => `<li><button type="button" data-falar="${esc(w)}" aria-label="Ouvir: ${esc(w)}" lang="en">${esc(w)}${MEA.icone("som")}</button></li>`).join("")}</ul>`,
+
+    citacoes: (b) => `<div class="citacoes">${b.itens.map((q) => `<blockquote class="citacao">${MEA.icone("aspas")}
+      <p class="cit-pt">${esc(q.pt)}</p><div class="frase-linha"><p class="cit-en" lang="en">${esc(q.en)}</p>${botaoOuvir(q.en)}</div></blockquote>`).join("")}</div>`,
 
     grafico: (b) => `<figure class="grafico-fig" style="margin:0">
       <figcaption class="sr-only">${esc(b.descricao)}</figcaption>
@@ -189,9 +222,10 @@
       <div class="capa-img"><img src="${esc(aula.capa)}" alt="${esc(aula.capaAlt || "")}"></div>
       <div class="capa-txt">
         <div class="curso">${esc(aula.curso)}</div>
-        <div class="selos"><span class="selo">${MEA.icone("calendario")}${esc(aula.semana)}</span><span class="selo contorno">${esc(aula.ciclo)}</span></div>
+        <div class="selos"><span class="selo">${MEA.icone("calendario")}${esc(aula.semana)}</span>${aula.ciclo ? `<span class="selo contorno">${esc(aula.ciclo)}</span>` : ""}</div>
         <h1>${esc(aula.titulo)}</h1>
-        <p>${esc(aula.resumo)}</p>
+        ${aula.subtitulo ? `<p class="capa-sub">${esc(aula.subtitulo)}</p>` : ""}
+        ${aula.resumo ? `<p>${esc(aula.resumo)}</p>` : ""}
         <div class="capa-acoes">
           <a class="btn btn-primario" href="#${esc(aula.secoes[0].id)}">Começar a aula ${MEA.icone("seta")}</a>
           ${aula.pdf && !MEA.previa ? `<a class="btn" href="${esc(aula.pdf)}" download>${MEA.icone("pdf")}<span>Baixar PDF original</span></a>` : ""}
@@ -207,10 +241,11 @@
 
     document.getElementById("secoes").innerHTML = aula.secoes.map((s, i) => `
       <section class="secao revela ${s.imagem ? "secao-com-img" : ""}" id="${esc(s.id)}" aria-labelledby="t-${esc(s.id)}">
+        ${s.banner ? `<img class="secao-banner" src="${esc(s.banner)}" alt="${esc(s.bannerAlt || "")}" loading="lazy">` : ""}
         <header class="secao-cab">
           <span class="secao-icone">${MEA.icone(s.icone)}</span>
-          <div><div class="secao-num">PARTE ${String(i + 1).padStart(2, "0")} DE ${String(aula.secoes.length).padStart(2, "0")}</div>
-          <h2 id="t-${esc(s.id)}">${esc(s.titulo)}</h2></div>
+          <div><div class="secao-num">${String(i + 1).padStart(2, "0")} / ${String(aula.secoes.length).padStart(2, "0")}${s.rotulo ? ` <span class="selo">${esc(s.rotulo)}</span>` : ""}</div>
+          <h2 id="t-${esc(s.id)}">${esc(s.titulo)}${s.tituloPt ? `<span class="titulo-pt">${esc(s.tituloPt)}</span>` : ""}</h2></div>
         </header>
         <div class="secao-corpo">
           <div class="blocos">${s.blocos.map((b) => (BLOCOS[b.tipo] || (() => ""))(b)).join("")}</div>
@@ -291,7 +326,7 @@
           <div class="corpo">
             <div class="selos"><span class="selo">${esc(a.semana)}</span><span class="selo contorno">${esc(a.ciclo)}</span></div>
             <h2>${esc(a.titulo)}</h2>
-            <p>${esc(a.resumo)}</p>
+            ${a.resumo || a.subtitulo ? `<p>${esc(a.resumo || a.subtitulo)}</p>` : ""}
             <p class="nota" style="margin-top:12px">${a.secoes.length} partes${feitos ? ` · ${feitos} estudadas` : ""}</p>
           </div></a>`;
       }).join("") : `<p>Nenhuma aula encontrada.</p>`;

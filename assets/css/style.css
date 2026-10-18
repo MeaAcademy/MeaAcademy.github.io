@@ -285,3 +285,56 @@ body.modo-estudo .pt::after { content: ""; }
 .papeis .papel { margin-top: 0; }
 @media (max-width: 960px) { .sumario h2 { display: none; } }
 @media (max-width: 640px) { .ferramentas { flex-wrap: nowrap; gap: 4px; } .btn { min-width: 40px; justify-content: center; } }
+
+/* ---------- Blocos da Semana 1 ---------- */
+.secao-num { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.secao-num .selo { font-size: .7rem; padding: 2px 8px; }
+.secao-banner { width: 100%; aspect-ratio: 1200 / 226; object-fit: cover; }
+.capa-sub { font-family: var(--fonte-titulo); color: var(--titulo); font-size: 1.15rem; }
+.rot-en { font-weight: 700; color: var(--acento); }
+.subtit { font-weight: 700; color: var(--texto-suave); margin: -4px 0 10px; }
+
+.pares { display: grid; gap: 14px; max-width: 68ch; }
+.pares h3 { font-size: 1.15rem; margin-bottom: 0; }
+.pares .en { font-weight: 400; }
+.pares.forte .en, .pares.forte .pt { font-weight: 700; }
+.par-pt { margin: 0; }
+
+.bilingue { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+.bilingue .col { background: var(--card); border-radius: var(--raio); padding: 18px 20px; }
+.bilingue h3 { font-size: 1.05rem; color: var(--acento); }
+.bilingue .col p { margin: 0 0 .8em; }
+.bilingue .frase-linha { margin-bottom: .8em; }
+.bilingue .frase-linha p { margin: 0; }
+
+.alfabeto { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.letra { width: 100%; font: inherit; color: var(--texto); background: var(--card); border: 1px solid transparent; border-radius: var(--raio); padding: 14px 12px; cursor: pointer; display: grid; gap: 2px; text-align: left; transition: transform .15s, border-color .15s; }
+.letra:hover { border-color: var(--acento); transform: translateY(-2px); }
+.letra.tocando { background: var(--acento); color: var(--acento-txt); }
+.letra.tocando .pt, .letra.tocando .som { color: inherit; }
+.letra .l { font-family: var(--fonte-titulo); font-size: 2rem; font-weight: 600; color: var(--titulo); line-height: 1; }
+.letra.tocando .l { color: inherit; }
+.letra .som { font-weight: 700; color: var(--acento); }
+.letra .pal { font-size: .95rem; }
+.letra .pt { display: inline; margin: 0; }
+
+.palavras { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.palavras button { font: inherit; font-family: var(--fonte-titulo); font-size: 1.05rem; color: var(--titulo); background: var(--card); border: 1px solid var(--linha); border-radius: 999px; padding: 8px 14px 8px 18px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+.palavras button svg { width: 16px; height: 16px; color: var(--acento); }
+.palavras button:hover, .palavras button.tocando { background: var(--acento); color: var(--acento-txt); border-color: var(--acento); }
+.palavras button.tocando svg, .palavras button:hover svg { color: inherit; }
+
+.citacoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.citacao { margin: 0; border: 1px solid var(--linha); border-radius: var(--raio); padding: 22px 22px 18px; position: relative; }
+.citacao > svg { width: 30px; height: 30px; color: var(--acento); margin-bottom: 8px; }
+.cit-pt { font-family: var(--fonte-titulo); color: var(--titulo); font-size: 1.25rem; line-height: 1.3; margin-bottom: 10px; }
+.cit-en { font-style: italic; color: var(--texto-suave); margin: 0; flex: 1; }
+
+.lista-falar { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+.lista-falar li { display: flex; align-items: center; justify-content: space-between; gap: 8px; background: var(--surface); border-radius: 10px; padding: 6px 6px 6px 12px; font-weight: 600; }
+.cartoes.escuro .cartao { background: var(--petroleo-700); color: #fff; }
+.cartoes.escuro .cartao h3, .cartoes.escuro .cartao .en, .cartoes.escuro .cartao .nota, .cartoes.escuro .cartao .pt { color: #fff; }
+.cartoes.escuro .cartao .pt { font-style: italic; opacity: .9; }
+.cartoes.balao .cartao { border-radius: 18px 18px 4px 18px; }
+.cartoes.balao .pt { font-style: italic; }
+.titulo-pt { display: block; font-size: .72em; font-weight: 500; color: var(--texto-suave); margin-top: 6px; }
