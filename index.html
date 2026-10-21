@@ -36,7 +36,12 @@
   <footer class="rodape">MEA Academy</footer>
 
   <script src="assets/js/app.js"></script>
-  <script src="aulas/lista.js"></script>
-  <script>MEA.montarFerramentas("#ferramentas"); MEA.renderizarInicio();</script>
+  <script>
+    MEA.montarFerramentas("#ferramentas");
+    const s = document.createElement("script");
+    s.src = "aulas/lista.js?v=" + Date.now();
+    s.onload = () => MEA.renderizarInicio();
+    document.head.appendChild(s);
+  </script>
 </body>
 </html>

@@ -315,7 +315,7 @@
 
   /* ---------- Carregar arquivos de aula ---------- */
   MEA.carregar = (ids) => Promise.all(ids.map((id) => MEA.aulas[id] ? Promise.resolve() : new Promise((ok) => {
-    const s = document.createElement("script"); s.src = `aulas/${id}.js`; s.onload = ok; s.onerror = ok; document.head.appendChild(s);
+    const s = document.createElement("script"); s.src = `aulas/${id}.js?v=${Date.now()}`; s.onload = ok; s.onerror = ok; document.head.appendChild(s);
   })));
 
   /* ---------- Página inicial ---------- */
