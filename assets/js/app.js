@@ -58,6 +58,8 @@
     letras: P('<path d="M3 18 6.5 6 10 18M4.2 14h4.6M13 6h4a3 3 0 0 1 0 6h-4zM13 12h4.5a3 3 0 0 1 0 6H13z"/>'),
     carta: P('<path d="M5 3h10l4 4v14H5z"/><path d="M8 9h8M8 12.5h8M8 16h5"/>'),
     aspas: P('<path d="M4 17c0-5 1.5-8 5-10M4 17h4v-4H4zM13 17c0-5 1.5-8 5-10M13 17h4v-4h-4z"/>'),
+    xicara: P('<path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-.6.8-.6 1.7 0 2.5M12 3.5c-.6.8-.6 1.7 0 2.5"/>'),
+    livro: P('<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/>'),
     seta: P('<path d="M5 12h13M13 6l6 6-6 6"/>'),
   };
   MEA.icone = (n) => ICONES[n] || ICONES.nota;
@@ -139,14 +141,20 @@
     </div>`;
 
   const BLOCOS = {
-    texto: (b) => `<p class="texto">${esc(b.texto)}</p>`,
+    texto: (b) => b.en
+      ? `<div class="frase-linha texto"><p class="en-wrap">${esc(b.texto)} <strong lang="en">${esc(b.en)}</strong></p>${botaoOuvir(b.en)}</div>`
+      : `<p class="texto">${esc(b.texto)}</p>`,
+
+    /* colunas de vocabulário */
+    grupos: (b) => `<div class="grupos">${b.grupos.map((g) => `<div class="grupo"><h3>${esc(g.titulo)}</h3>
+      <ul>${g.itens.map((it) => `<li><button type="button" data-falar="${esc(it.en)}" aria-label="Ouvir: ${esc(it.en)}"><span class="en" lang="en">${esc(it.en)}</span> <span class="pt">${esc(it.pt)}</span>${MEA.icone("som")}</button></li>`).join("")}</ul></div>`).join("")}</div>`,
 
     chave: (b) => `<div class="chave"><h3>${esc(b.titulo)}</h3><p>${esc(b.texto)}</p></div>`,
 
     frases: (b) => `<div class="frases ${b.estilo || ""}">
       ${b.titulo ? `<h3>${esc(b.titulo)}${b.tituloPt ? `<span class="titulo-pt">${esc(b.tituloPt)}</span>` : ""}</h3>` : ""}
       <ul>${b.itens.map((it) => b.estilo === "icones"
-        ? `<li><span class="icone-bolha">${MEA.icone(it.icone)}</span><div>${it.titulo ? `<div class="tit">${esc(it.titulo)}</div>` : ""}${frase(it)}</div></li>`
+        ? `<li><span class="icone-bolha">${MEA.icone(it.icone)}</span><div>${it.titulo ? `<div class="tit">${esc(it.titulo)}</div>` : ""}${frase(it)}${it.nota ? `<p class="nota"><em>${esc(it.nota)}</em></p>` : ""}</div></li>`
         : `<li><div class="frase-linha"><div class="en-wrap"><span class="en" lang="en">${esc(it.en)}</span><span class="sep" aria-hidden="true">–</span><span class="pt">${esc(it.pt)}</span></div>${botaoOuvir(it.en)}</div></li>`).join("")}</ul></div>`,
 
     cartoes: (b) => `<div class="cartoes ${b.estilo || ""}">${b.itens.map((it) => `
@@ -180,7 +188,7 @@
 
     passos: (b) => `<ol class="passos ${b.estilo || ""}">${b.itens.map((it, i) => `
       <li><span class="passo-n">${b.estilo === "linha" ? String(i + 1).padStart(2, "0") : i + 1}</span>
-      <div><h3>${esc(it.titulo)}</h3>${it.en ? frase(it) : ""}${it.forte ? `<p><strong>${esc(it.forte)}</strong></p>` : ""}${it.texto ? `<p>${esc(it.texto)}</p>` : ""}</div></li>`).join("")}</ol>`,
+      <div><h3>${esc(it.titulo)}</h3>${it.en ? frase(it) : ""}${it.forte ? `<p><strong>${esc(it.forte)}</strong></p>` : ""}${it.texto ? `<p>${esc(it.texto)}</p>` : ""}${it.nota ? `<p class="nota"><em>${esc(it.nota)}</em></p>` : ""}</div></li>`).join("")}</ol>`,
 
     /* pares inglês/português, uma linha embaixo da outra */
     pares: (b) => `<div class="pares ${b.forte ? "forte" : ""}">${b.titulo ? `<h3>${esc(b.titulo)}${b.tituloPt ? `<span class="titulo-pt">${esc(b.tituloPt)}</span>` : ""}</h3>` : ""}${b.itens.map((it) => it.en
@@ -245,7 +253,7 @@
         <header class="secao-cab">
           <span class="secao-icone">${MEA.icone(s.icone)}</span>
           <div><div class="secao-num">${String(i + 1).padStart(2, "0")} / ${String(aula.secoes.length).padStart(2, "0")}${s.rotulo ? ` <span class="selo">${esc(s.rotulo)}</span>` : ""}</div>
-          <h2 id="t-${esc(s.id)}">${esc(s.titulo)}${s.tituloPt ? `<span class="titulo-pt">${esc(s.tituloPt)}</span>` : ""}</h2></div>
+          <h2 id="t-${esc(s.id)}"${s.ocultarTitulo ? ' class="sr-only"' : ""}>${esc(s.titulo)}${s.tituloPt ? `<span class="titulo-pt">${esc(s.tituloPt)}</span>` : ""}</h2></div>
         </header>
         <div class="secao-corpo">
           <div class="blocos">${s.blocos.map((b) => (BLOCOS[b.tipo] || (() => ""))(b)).join("")}</div>

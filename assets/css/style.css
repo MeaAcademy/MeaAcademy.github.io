@@ -338,3 +338,17 @@ body.modo-estudo .pt::after { content: ""; }
 .cartoes.balao .cartao { border-radius: 18px 18px 4px 18px; }
 .cartoes.balao .pt { font-style: italic; }
 .titulo-pt { display: block; font-size: .72em; font-weight: 500; color: var(--texto-suave); margin-top: 6px; }
+
+/* ---------- Grupos de vocabulário ---------- */
+.grupos { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; align-items: start; }
+.grupo { background: var(--card); border-radius: var(--raio); padding: 16px; }
+.grupo h3 { font-size: 1.05rem; color: var(--acento); }
+.grupo ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
+.grupo button { width: 100%; font: inherit; color: var(--texto); background: transparent; border: 0; border-radius: 8px; padding: 6px 8px; text-align: left; cursor: pointer; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 6px; position: relative; padding-right: 28px; }
+.grupo button:hover, .grupo button.tocando { background: var(--surface); }
+.grupo button .pt { display: inline; margin: 0; }
+.grupo button .pt::before { content: "– "; }
+.grupo button svg { width: 16px; height: 16px; color: var(--acento); position: absolute; right: 8px; top: 50%; transform: translateY(-50%); }
+.grupo .en { font-size: 1rem; }
+.secao-num:only-child { margin-top: 2px; }
+.frase-linha.texto .en-wrap { flex: 0 1 auto; margin: 0; }

@@ -3,5 +3,6 @@
 MEA.lista = [
   "week-1-ciclo-1",
   "week-1-pt-2",
+  "week-3",
   "week-16-ciclo-4",
 ];
