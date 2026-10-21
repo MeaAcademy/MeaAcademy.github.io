@@ -109,13 +109,23 @@
     }
   };
 
-  /* ---------- Pronúncia (voz do navegador, en-US) ---------- */
+  /* ---------- Idiomas ---------- */
+  MEA.IDIOMAS = {
+    en: { nome: "Inglês", nativo: "English", voz: "en-US" },
+    es: { nome: "Espanhol", nativo: "Español", voz: "es-ES" },
+  };
+  let idioma = "en";
+  const IDI = () => MEA.IDIOMAS[idioma] || MEA.IDIOMAS.en;
+
+  /* ---------- Pronúncia (voz do navegador) ---------- */
   let vozEn = null;
   function escolherVoz() {
     if (!("speechSynthesis" in window)) return;
     const vozes = speechSynthesis.getVoices();
-    vozEn = vozes.find((v) => /en-US/i.test(v.lang) && /natural|google|samantha|aria|jenny/i.test(v.name)) ||
-            vozes.find((v) => /en-US/i.test(v.lang)) || vozes.find((v) => /^en/i.test(v.lang)) || null;
+    const alvo = IDI().voz, base = idioma;
+    vozEn = vozes.find((v) => v.lang.replace("_", "-").toLowerCase() === alvo.toLowerCase() && /natural|google|samantha|aria|jenny|monica|paulina|elvira|helena/i.test(v.name)) ||
+            vozes.find((v) => v.lang.replace("_", "-").toLowerCase() === alvo.toLowerCase()) ||
+            vozes.find((v) => v.lang.toLowerCase().startsWith(base)) || null;
   }
   if ("speechSynthesis" in window) { escolherVoz(); speechSynthesis.onvoiceschanged = escolherVoz; }
 
@@ -125,7 +135,7 @@
     document.querySelectorAll(".ouvir.tocando").forEach((b) => b.classList.remove("tocando"));
     const limpo = texto.replace(/\[([^\]]+)\]/g, "$1").replace(/…/g, "...");
     const u = new SpeechSynthesisUtterance(limpo);
-    u.lang = "en-US"; u.rate = pref.get("velocidade", 0.9); if (vozEn) u.voice = vozEn;
+    u.lang = IDI().voz; u.rate = pref.get("velocidade", 0.9); if (vozEn) u.voice = vozEn;
     if (botao) { botao.classList.add("tocando"); }
     u.onend = u.onerror = () => { botao && botao.classList.remove("tocando"); aoTerminar && aoTerminar(); };
     speechSynthesis.speak(u);
@@ -135,19 +145,19 @@
   const botaoOuvir = (en) => `<button class="ouvir" type="button" data-falar="${esc(en)}" aria-label="Ouvir pronúncia: ${esc(en)}" title="Ouvir pronúncia">${MEA.icone("som")}</button>`;
   const frase = (it) => `
     <div class="frase-linha">
-      <div class="en-wrap"><p class="en" lang="en">${it.rotuloEn ? `<span class="rot-en">${esc(it.rotuloEn)}</span> ` : ""}${esc(it.en)}</p>
+      <div class="en-wrap"><p class="en" lang="${idioma}">${it.rotuloEn ? `<span class="rot-en">${esc(it.rotuloEn)}</span> ` : ""}${esc(it.en)}</p>
       ${it.pt ? `<span class="pt">${it.rotuloPt ? `<span class="rot">${esc(it.rotuloPt)}</span> ` : ""}${esc(it.pt)}</span>` : ""}</div>
       ${botaoOuvir(it.en)}
     </div>`;
 
   const BLOCOS = {
     texto: (b) => b.en
-      ? `<div class="frase-linha texto"><p class="en-wrap">${esc(b.texto)} <strong lang="en">${esc(b.en)}</strong></p>${botaoOuvir(b.en)}</div>`
+      ? `<div class="frase-linha texto"><p class="en-wrap">${esc(b.texto)} <strong lang="${idioma}">${esc(b.en)}</strong></p>${botaoOuvir(b.en)}</div>`
       : `<p class="texto">${esc(b.texto)}</p>`,
 
     /* colunas de vocabulário */
     grupos: (b) => `<div class="grupos">${b.grupos.map((g) => `<div class="grupo"><h3>${esc(g.titulo)}</h3>
-      <ul>${g.itens.map((it) => `<li><button type="button" data-falar="${esc(it.en)}" aria-label="Ouvir: ${esc(it.en)}"><span class="en" lang="en">${esc(it.en)}</span> <span class="pt">${esc(it.pt)}</span>${MEA.icone("som")}</button></li>`).join("")}</ul></div>`).join("")}</div>`,
+      <ul>${g.itens.map((it) => `<li><button type="button" data-falar="${esc(it.en)}" aria-label="Ouvir: ${esc(it.en)}"><span class="en" lang="${idioma}">${esc(it.en)}</span> <span class="pt">${esc(it.pt)}</span>${MEA.icone("som")}</button></li>`).join("")}</ul></div>`).join("")}</div>`,
 
     chave: (b) => `<div class="chave"><h3>${esc(b.titulo)}</h3><p>${esc(b.texto)}</p></div>`,
 
@@ -155,7 +165,7 @@
       ${b.titulo ? `<h3>${esc(b.titulo)}${b.tituloPt ? `<span class="titulo-pt">${esc(b.tituloPt)}</span>` : ""}</h3>` : ""}
       <ul>${b.itens.map((it) => b.estilo === "icones"
         ? `<li><span class="icone-bolha">${MEA.icone(it.icone)}</span><div>${it.titulo ? `<div class="tit">${esc(it.titulo)}</div>` : ""}${frase(it)}${it.nota ? `<p class="nota"><em>${esc(it.nota)}</em></p>` : ""}</div></li>`
-        : `<li><div class="frase-linha"><div class="en-wrap"><span class="en" lang="en">${esc(it.en)}</span><span class="sep" aria-hidden="true">–</span><span class="pt">${esc(it.pt)}</span></div>${botaoOuvir(it.en)}</div></li>`).join("")}</ul></div>`,
+        : `<li><div class="frase-linha"><div class="en-wrap"><span class="en" lang="${idioma}">${esc(it.en)}</span><span class="sep" aria-hidden="true">–</span><span class="pt">${esc(it.pt)}</span></div>${botaoOuvir(it.en)}</div></li>`).join("")}</ul></div>`,
 
     cartoes: (b) => `<div class="cartoes ${b.estilo || ""}">${b.itens.map((it) => `
       <article class="cartao">
@@ -164,7 +174,7 @@
         ${it.icone ? `<span class="icone-bolha">${MEA.icone(it.icone)}</span>` : ""}
         ${it.titulo ? `<h3>${esc(it.titulo)}</h3>` : ""}
         ${it.subtitulo ? `<p class="subtit">${esc(it.subtitulo)}</p>` : ""}
-        ${it.lista ? `<ul class="lista-falar">${it.lista.map((x) => `<li><span lang="en">${esc(x)}</span>${botaoOuvir(x)}</li>`).join("")}</ul>` : ""}
+        ${it.lista ? `<ul class="lista-falar">${it.lista.map((x) => `<li><span lang="${idioma}">${esc(x)}</span>${botaoOuvir(x)}</li>`).join("")}</ul>` : ""}
         ${it.texto ? `<p>${esc(it.texto)}</p>` : ""}
         ${it.en ? frase(it) : ""}
         ${it.nota ? `<p class="nota">${esc(it.nota)}</p>` : ""}
@@ -197,18 +207,18 @@
 
     /* duas colunas: English | Português */
     bilingue: (b) => `<div class="bilingue">
-      <div class="col" lang="en"><h3>English</h3>${b.en.map((t) => `<div class="frase-linha"><p class="en-wrap">${esc(t)}</p>${botaoOuvir(t)}</div>`).join("")}</div>
+      <div class="col" lang="${idioma}"><h3>${IDI().nativo}</h3>${b.en.map((t) => `<div class="frase-linha"><p class="en-wrap">${esc(t)}</p>${botaoOuvir(t)}</div>`).join("")}</div>
       <div class="col"><h3>Português</h3>${b.pt.map((t) => `<p>${esc(t)}</p>`).join("")}</div></div>`,
 
     alfabeto: (b) => `<ul class="alfabeto">${b.itens.map((x) => `
       <li><button type="button" class="letra" data-falar="${esc(x.letra + ". " + x.palavra)}" aria-label="Ouvir ${esc(x.letra)}: ${esc(x.palavra)}">
-        <span class="l" lang="en">${esc(x.letra)}</span><span class="som">"${esc(x.som)}"</span>
-        <span class="pal"><span lang="en">${esc(x.palavra)}</span> <span class="pt">(${esc(x.pt)})</span></span></button></li>`).join("")}</ul>`,
+        <span class="l" lang="${idioma}">${esc(x.letra)}</span><span class="som">"${esc(x.som)}"</span>
+        <span class="pal"><span lang="${idioma}">${esc(x.palavra)}</span> <span class="pt">(${esc(x.pt)})</span></span></button></li>`).join("")}</ul>`,
 
-    palavras: (b) => `<ul class="palavras">${b.itens.map((w) => `<li><button type="button" data-falar="${esc(w)}" aria-label="Ouvir: ${esc(w)}" lang="en">${esc(w)}${MEA.icone("som")}</button></li>`).join("")}</ul>`,
+    palavras: (b) => `<ul class="palavras">${b.itens.map((w) => `<li><button type="button" data-falar="${esc(w)}" aria-label="Ouvir: ${esc(w)}" lang="${idioma}">${esc(w)}${MEA.icone("som")}</button></li>`).join("")}</ul>`,
 
     citacoes: (b) => `<div class="citacoes">${b.itens.map((q) => `<blockquote class="citacao">${MEA.icone("aspas")}
-      <p class="cit-pt">${esc(q.pt)}</p><div class="frase-linha"><p class="cit-en" lang="en">${esc(q.en)}</p>${botaoOuvir(q.en)}</div></blockquote>`).join("")}</div>`,
+      <p class="cit-pt">${esc(q.pt)}</p><div class="frase-linha"><p class="cit-en" lang="${idioma}">${esc(q.en)}</p>${botaoOuvir(q.en)}</div></blockquote>`).join("")}</div>`,
 
     grafico: (b) => `<figure class="grafico-fig" style="margin:0">
       <figcaption class="sr-only">${esc(b.descricao)}</figcaption>
@@ -223,6 +233,7 @@
 
   /* ---------- Página da aula ---------- */
   MEA.renderizarAula = function (aula) {
+    idioma = aula.idioma || "en"; escolherVoz();
     document.title = `${aula.titulo} · ${aula.semana} · MEA Academy`;
     const feitos = new Set(pref.get("feito." + aula.id, []));
 
@@ -324,23 +335,30 @@
     await MEA.carregar(ids);
     const aulas = ids.map((id) => MEA.aulas[id]).filter(Boolean);
     const grade = document.getElementById("aulas");
+    const abas = document.getElementById("idiomas");
+    const idiomas = Object.keys(MEA.IDIOMAS).filter((k) => aulas.some((a) => (a.idioma || "en") === k));
+    let escolhido = pref.get("idioma", idiomas[0]);
+    if (!idiomas.includes(escolhido)) escolhido = idiomas[0];
+    const desenharAbas = () => { if (abas) abas.innerHTML = idiomas.map((k) => `<button class="btn" type="button" role="tab" aria-selected="${k === escolhido}" aria-pressed="${k === escolhido}" data-idioma="${k}">${esc(MEA.IDIOMAS[k].nome)} <span class="conta">${aulas.filter((a) => (a.idioma || "en") === k).length}</span></button>`).join(""); };
+    if (abas) abas.addEventListener("click", (e) => { const b = e.target.closest("[data-idioma]"); if (!b) return; escolhido = b.dataset.idioma; pref.set("idioma", escolhido); desenharAbas(); desenhar(busca ? busca.value : ""); });
+    desenharAbas();
     const desenhar = (filtro = "") => {
       const f = filtro.trim().toLowerCase();
-      const vis = aulas.filter((a) => !f || [a.titulo, a.curso, a.semana, a.ciclo, a.resumo].join(" ").toLowerCase().includes(f));
+      const vis = aulas.filter((a) => (a.idioma || "en") === escolhido).filter((a) => !f || [a.titulo, a.curso, a.semana, a.ciclo, a.resumo].join(" ").toLowerCase().includes(f));
       grade.innerHTML = vis.length ? vis.map((a) => {
         const feitos = pref.get("feito." + a.id, []).length;
         return `<a class="aula-card" href="aula.html?id=${encodeURIComponent(a.id)}">
           <img src="${esc(a.capa)}" alt="" loading="lazy">
           <div class="corpo">
-            <div class="selos"><span class="selo">${esc(a.semana)}</span><span class="selo contorno">${esc(a.ciclo)}</span></div>
+            <div class="selos"><span class="selo">${esc(a.semana)}</span>${a.ciclo ? `<span class="selo contorno">${esc(a.ciclo)}</span>` : ""}</div>
             <h2>${esc(a.titulo)}</h2>
             ${a.resumo || a.subtitulo ? `<p>${esc(a.resumo || a.subtitulo)}</p>` : ""}
             <p class="nota" style="margin-top:12px">${a.secoes.length} partes${feitos ? ` · ${feitos} estudadas` : ""}</p>
           </div></a>`;
       }).join("") : `<p>Nenhuma aula encontrada.</p>`;
     };
-    desenhar();
     const busca = document.getElementById("busca");
+    desenhar();
     if (busca) busca.addEventListener("input", () => desenhar(busca.value));
   };
 })();

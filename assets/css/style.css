@@ -352,3 +352,8 @@ body.modo-estudo .pt::after { content: ""; }
 .grupo .en { font-size: 1rem; }
 .secao-num:only-child { margin-top: 2px; }
 .frase-linha.texto .en-wrap { flex: 0 1 auto; margin: 0; }
+
+/* ---------- Abas de idioma ---------- */
+.idiomas { max-width: 1180px; margin: 0 auto; padding: 0 16px 16px; display: flex; gap: 8px; flex-wrap: wrap; }
+.idiomas .btn { font-size: 1rem; padding: 8px 18px; }
+.idiomas .conta { font-size: .8rem; opacity: .75; }

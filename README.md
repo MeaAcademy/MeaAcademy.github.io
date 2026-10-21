@@ -1,6 +1,6 @@
 # MEA Academy — Aulas
 
-Site com as aulas da MEA Academy em formato visual, acessível e fácil de estudar.
+Site com as aulas da MEA Academy (inglês e espanhol) em formato visual, acessível e fácil de estudar.
 O conteúdo de cada aula é transcrito **fielmente** do material original. Só muda a apresentação.
 
 ## O que cada aula oferece
@@ -17,6 +17,7 @@ O conteúdo de cada aula é transcrito **fielmente** do material original. Só m
    - `aulas/<id-da-aula>.js`, com o conteúdo transcrito sem alterações
    - `assets/img/<id-da-aula>/`, com as fotos extraídas do PDF
    - uma linha nova em `aulas/lista.js`
+   - para aulas de espanhol, o arquivo começa com `es-` e tem `idioma: "es"` (a voz da pronúncia muda sozinha)
 3. Faça o commit. O GitHub Pages atualiza o site sozinho.
 
 ## Publicar no GitHub Pages (uma única vez)
