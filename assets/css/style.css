@@ -357,3 +357,50 @@ body.modo-estudo .pt::after { content: ""; }
 .idiomas { max-width: 1180px; margin: 0 auto; padding: 0 16px 16px; display: flex; gap: 8px; flex-wrap: wrap; }
 .idiomas .btn { font-size: 1rem; padding: 8px 18px; }
 .idiomas .conta { font-size: .8rem; opacity: .75; }
+
+/* ---------- Aula com emojis (Fruits) ---------- */
+.capa-emoji, .card-emoji { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; background: radial-gradient(circle at 30% 20%, var(--petroleo-600), var(--petroleo-900)); font-size: clamp(3rem, 8vw, 6rem); letter-spacing: .1em; line-height: 1.3; padding: 24px; }
+.card-emoji { position: static; aspect-ratio: 16/10; font-size: 3rem; }
+.info { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 0; }
+.info div { background: var(--card); border-radius: 12px; padding: 12px 14px; }
+.info dt { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--texto-suave); }
+.info dd { margin: 2px 0 0; font-family: var(--fonte-titulo); color: var(--titulo); font-weight: 600; }
+.lista-tit { font-size: 1.1rem; margin-bottom: 4px; }
+.lista-simples { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; max-width: 68ch; }
+.lista-simples li::marker { color: var(--acento); font-weight: 700; }
+
+.fichas-wrap { display: grid; gap: 14px; justify-items: start; }
+.fichas { list-style: none; padding: 0; margin: 0; width: 100%; display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+.ficha, .carta { width: 100%; font: inherit; color: var(--texto); background: var(--card); border: 1px solid transparent; border-radius: var(--raio); padding: 16px 10px 14px; cursor: pointer; display: grid; justify-items: center; gap: 6px; text-align: center; transition: transform .15s, border-color .15s; }
+.ficha:hover, .carta:hover { transform: translateY(-2px); border-color: var(--acento); }
+.ficha.tocando, .carta.tocando { border-color: var(--acento); box-shadow: 0 0 0 3px var(--petroleo-100); }
+.emoji { font-size: 2.8rem; line-height: 1; }
+.palavra { display: grid; gap: 2px; }
+.palavra strong { font-family: var(--fonte-titulo); color: var(--titulo); font-size: 1.05rem; }
+.pt-ficha { color: var(--texto-suave); font-size: .92rem; }
+.escondido .ficha:not(.vista) .palavra { visibility: hidden; }
+
+.adivinhe { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.carta .emoji { font-size: 3.6rem; }
+.carta .perg { font-family: var(--fonte-titulo); color: var(--titulo); font-weight: 600; }
+.carta .resp { display: none; font-weight: 700; color: var(--acento); }
+.carta .dica-clique { font-size: .8rem; color: var(--texto-suave); }
+.carta.revelada .resp { display: block; }
+.carta.revelada .dica-clique { display: none; }
+
+.pronuncia { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
+.pronuncia li { display: flex; align-items: center; gap: 10px; background: var(--card); border-radius: 12px; padding: 8px 8px 8px 14px; }
+.pr-en { font-weight: 700; min-width: 6.5em; }
+.pr-guia { flex: 1; font-family: var(--fonte-titulo); color: var(--acento); letter-spacing: .02em; }
+
+.cores { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.cores li { display: flex; align-items: center; gap: 12px; background: var(--card); border-radius: 12px; padding: 8px 8px 8px 12px; }
+.bolinhas { display: inline-flex; align-items: center; gap: 4px; min-width: 5.2em; }
+.emoji-p { font-size: 1.6rem; margin-right: 4px; }
+.bol { width: 16px; height: 16px; border-radius: 50%; display: inline-block; box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); flex: none; }
+.frase-cor { flex: 1; font-weight: 600; }
+.paleta button { gap: 8px; }
+.capa-emoji, .card-emoji { white-space: pre-line; }
+.pronuncia { grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); }
+.pr-guia { white-space: nowrap; }
+.chave.emojis p { font-size: 2.2rem; letter-spacing: .15em; }

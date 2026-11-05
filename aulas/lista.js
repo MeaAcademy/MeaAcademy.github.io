@@ -7,6 +7,7 @@ MEA.lista = [
   "week-1-pt-2",
   "week-3",
   "week-16-ciclo-4",
+  "fruits",
   // Espanhol
   "es-week-1-ciclo-1",
   "es-week-1-pt-2",
