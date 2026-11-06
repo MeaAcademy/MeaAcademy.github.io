@@ -167,7 +167,7 @@
         <span class="emoji" aria-hidden="true">${esc(x.emoji)}</span><span class="palavra"><strong lang="${idioma}">${esc(x.en)}</strong><span class="pt-ficha">${esc(x.pt)}</span></span></button></li>`).join("")}</ul></div>`,
 
     /* jogo: figura + pergunta, clique para ver a resposta */
-    adivinhe: (b) => `<ul class="adivinhe">${b.itens.map((x) => `<li><button type="button" class="carta" data-revelar data-falar="${esc(x.resposta)}" aria-label="${esc(x.pergunta)} Clique para ver a resposta">
+    adivinhe: (b) => `<ul class="adivinhe">${b.itens.map((x) => `<li><button type="button" class="carta" data-revelar data-falar="${esc(x.falar || x.resposta)}" aria-label="${esc(x.pergunta)} Clique para ver a resposta">
       <span class="emoji" aria-hidden="true">${esc(x.emoji)}</span><span class="perg" lang="${idioma}">${esc(x.pergunta)}</span>
       <span class="resp" lang="${idioma}">${esc(x.resposta)}</span><span class="dica-clique">Toque para ver a resposta</span></button></li>`).join("")}</ul>`,
 

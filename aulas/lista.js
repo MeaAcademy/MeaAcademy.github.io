@@ -13,4 +13,5 @@ MEA.lista = [
   "es-week-1-pt-2",
   "es-week-3",
   "es-week-16-ciclo-4",
+  "es-tilde",
 ];
