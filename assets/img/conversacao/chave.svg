@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Chave dentro de uma fechadura em corte, com os pinos alinhados">
+  <defs>
+    <radialGradient id="fundo" cx="35%" cy="30%" r="85%">
+      <stop offset="0" stop-color="#2a7f93"/>
+      <stop offset="0.55" stop-color="#145566"/>
+      <stop offset="1" stop-color="#0a2c37"/>
+    </radialGradient>
+    <linearGradient id="latao" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3d9a4"/>
+      <stop offset="0.45" stop-color="#d9b06a"/>
+      <stop offset="1" stop-color="#a87d3e"/>
+    </linearGradient>
+    <linearGradient id="lataoEscuro" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c79a55"/>
+      <stop offset="1" stop-color="#8a6230"/>
+    </linearGradient>
+    <linearGradient id="corte" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e8c88c"/>
+      <stop offset="1" stop-color="#c9a062"/>
+    </linearGradient>
+    <linearGradient id="aco" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef1f3"/>
+      <stop offset="0.5" stop-color="#b9c2c8"/>
+      <stop offset="1" stop-color="#7d8890"/>
+    </linearGradient>
+    <linearGradient id="pino" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#b8894a"/>
+      <stop offset="0.4" stop-color="#f6e1b0"/>
+      <stop offset="1" stop-color="#a77a3c"/>
+    </linearGradient>
+    <filter id="sombra" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#021216" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#fundo)"/>
+  <g transform="translate(400 320) scale(0.78) translate(-400 -330)">
+  <ellipse cx="420" cy="500" rx="330" ry="34" fill="#021216" opacity="0.35"/>
+
+  <!-- Fechadura (cilindro) -->
+  <g filter="url(#sombra)">
+    <rect x="330" y="140" width="360" height="290" rx="22" fill="url(#latao)"/>
+    <!-- face em corte -->
+    <rect x="348" y="158" width="324" height="254" rx="10" fill="url(#corte)"/>
+    <!-- tambor (plug) -->
+    <rect x="348" y="300" width="324" height="112" rx="10" fill="url(#lataoEscuro)" opacity="0.55"/>
+    <line x1="348" y1="300" x2="672" y2="300" stroke="#6f4d22" stroke-width="2" opacity="0.6"/>
+  </g>
+
+  <!-- Câmaras dos pinos -->
+  <g>
+    <g id="camaras" fill="#3b2a14" opacity="0.85">
+      <rect x="368" y="168" width="34" height="168" rx="6"/>
+      <rect x="420" y="168" width="34" height="168" rx="6"/>
+      <rect x="472" y="168" width="34" height="168" rx="6"/>
+      <rect x="524" y="168" width="34" height="168" rx="6"/>
+      <rect x="576" y="168" width="34" height="168" rx="6"/>
+      <rect x="628" y="168" width="34" height="168" rx="6"/>
+    </g>
+    <!-- molas -->
+    <g fill="none" stroke="#d7dde1" stroke-width="3" stroke-linejoin="round">
+      <polyline points="373,174 397,180 373,186 397,192 373,198 397,204 373,210 397,216 373,222"/>
+      <polyline points="425,174 449,180 425,186 449,192 425,198 449,204 425,210 449,216 425,222 449,228"/>
+      <polyline points="477,174 501,180 477,186 501,192 477,198 501,204 477,210 501,216"/>
+      <polyline points="529,174 553,180 529,186 553,192 529,198 553,204 529,210 553,216 529,222 553,228 529,234"/>
+      <polyline points="581,174 605,180 581,186 605,192 581,198 605,204 581,210 605,216 581,222"/>
+      <polyline points="633,174 657,180 633,186 657,192 633,198 657,204 633,210 657,216 633,222 657,228"/>
+    </g>
+    <!-- pinos superiores (drivers): todos terminam na linha de corte y=300 -->
+    <g fill="url(#pino)" stroke="#7a5426" stroke-width="1.5">
+      <rect x="372" y="226" width="26" height="74" rx="4"/>
+      <rect x="424" y="232" width="26" height="68" rx="4"/>
+      <rect x="476" y="220" width="26" height="80" rx="4"/>
+      <rect x="528" y="238" width="26" height="62" rx="4"/>
+      <rect x="580" y="226" width="26" height="74" rx="4"/>
+      <rect x="632" y="232" width="26" height="68" rx="4"/>
+    </g>
+    <!-- pinos inferiores: começam na linha de corte e tocam os dentes da chave -->
+    <g fill="url(#pino)" stroke="#7a5426" stroke-width="1.5">
+      <path d="M372 302 h26 v40 l-13 10 l-13 -10 z"/>
+      <path d="M424 302 h26 v26 l-13 10 l-13 -10 z"/>
+      <path d="M476 302 h26 v46 l-13 10 l-13 -10 z"/>
+      <path d="M528 302 h26 v20 l-13 10 l-13 -10 z"/>
+      <path d="M580 302 h26 v36 l-13 10 l-13 -10 z"/>
+      <path d="M632 302 h26 v28 l-13 10 l-13 -10 z"/>
+    </g>
+  </g>
+
+  <!-- Chave -->
+  <g filter="url(#sombra)">
+    <!-- lâmina com o segredo (dentes) -->
+    <path d="M250 366
+             L362 366 L372 352 L385 362 L398 352
+             L424 338 L437 348 L450 338
+             L476 358 L489 368 L502 358
+             L528 332 L541 342 L554 332
+             L580 348 L593 358 L606 348
+             L632 340 L645 350 L658 340
+             L676 352 L690 380
+             L690 404 L250 404 Z"
+          fill="url(#aco)" stroke="#5f6a72" stroke-width="2" stroke-linejoin="round"/>
+    <line x1="260" y1="388" x2="680" y2="388" stroke="#8e989f" stroke-width="3" opacity="0.7"/>
+    <!-- cabeça da chave -->
+    <path d="M110 290 Q110 262 140 262 L235 262 Q262 262 262 290 L262 440 Q262 468 235 468 L140 468 Q110 468 110 440 Z"
+          fill="url(#aco)" stroke="#5f6a72" stroke-width="2"/>
+    <rect x="248" y="340" width="34" height="80" rx="8" fill="url(#aco)" stroke="#5f6a72" stroke-width="2"/>
+    <circle cx="166" cy="365" r="34" fill="url(#fundo)" stroke="#5f6a72" stroke-width="2"/>
+    <path d="M130 282 Q186 270 238 286" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+  </g>
+
+  <!-- brilho na fechadura -->
+  <path d="M352 150 Q520 132 680 152" fill="none" stroke="#fff3d6" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+  </g>
+</svg>

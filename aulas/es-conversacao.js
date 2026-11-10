@@ -12,7 +12,8 @@ MEA.registrarAula({
   titulo: "Conversação",
   subtitulo: "Hablar y comunicarse: la guía completa",
   resumo: "Una clase profunda sobre cómo funciona la comunicación real: escucha, voz, acento y entonación, registros, preguntas, turnos de palabra, opiniones, malentendidos, estructura de ideas, narración, empatía, lenguaje corporal y llamadas.",
-  capaEmoji: "💬 🗣️ 👂\n🤝 🎙️ 😊",
+  capa: "assets/img/conversacao/chave.svg",
+  capaAlt: "Llave dentro de una cerradura en corte, con los pernos alineados",
 
   secoes: [
     {

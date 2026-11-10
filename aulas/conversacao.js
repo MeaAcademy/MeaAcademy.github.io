@@ -11,7 +11,8 @@ MEA.registrarAula({
   titulo: "Conversação",
   subtitulo: "Speaking and communication: the complete guide",
   resumo: "A deep lesson on how real communication works: listening, voice, stress and intonation, registers, questions, turn-taking, opinions, repairing misunderstandings, structuring ideas, storytelling, empathy, body language and calls.",
-  capaEmoji: "💬 🗣️ 👂\n🤝 🎙️ 😊",
+  capa: "assets/img/conversacao/chave.svg",
+  capaAlt: "A key inside a cutaway lock, with the pins aligned",
 
   secoes: [
     {
