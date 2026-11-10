@@ -9,6 +9,9 @@ MEA.lista = [
   "week-16-ciclo-4",
   "fruits",
   "conversacao",
+  "dias-meses-anos",
+  "numeros",
+  "ordinais",
   // Espanhol
   "es-week-1-ciclo-1",
   "es-week-1-pt-2",
@@ -16,4 +19,7 @@ MEA.lista = [
   "es-week-16-ciclo-4",
   "es-tilde",
   "es-conversacao",
+  "es-dias-meses-anos",
+  "es-numeros",
+  "es-ordinais",
 ];

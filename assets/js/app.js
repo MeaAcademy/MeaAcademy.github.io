@@ -171,7 +171,7 @@
       ${x.emoji ? `<span class="emoji" aria-hidden="true">${esc(x.emoji)}</span>` : ""}<span class="perg" lang="${idioma}">${esc(x.pergunta)}</span>
       <span class="resp" lang="${idioma}">${esc(x.resposta)}</span><span class="dica-clique">${esc(b.rotuloClique || "Toque para ver a resposta")}</span></button></li>`).join("")}</ul>`,
 
-    pronuncia: (b) => `<ul class="pronuncia">${b.itens.map((x) => `<li><span class="pr-en" lang="${idioma}">${esc(x.en)}</span><span class="pr-guia">${esc(x.guia)}</span>${botaoOuvir(x.en)}</li>`).join("")}</ul>`,
+    pronuncia: (b) => `<ul class="pronuncia">${b.itens.map((x) => `<li><span class="pr-en" lang="${idioma}">${esc(x.en)}</span><span class="pr-guia">${esc(x.guia)}</span>${botaoOuvir(x.falar || x.en)}</li>`).join("")}</ul>`,
 
     cores: (b) => `<ul class="cores">${b.itens.map((x) => `<li><span class="bolinhas" aria-hidden="true">${(x.emoji ? `<span class="emoji-p">${esc(x.emoji)}</span>` : "") + x.cores.map((c) => `<span class="bol" style="background:${esc(c)}"></span>`).join("")}</span><span class="frase-cor" lang="${idioma}">${esc(x.en)}</span>${botaoOuvir(x.en)}</li>`).join("")}</ul>`,
 
