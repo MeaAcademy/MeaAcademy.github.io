@@ -9,7 +9,8 @@ MEA.registrarAula({
   ciclo: "45 minutes",
   titulo: "Fruits",
   subtitulo: "Vocabulary, Speaking & Fun Activities",
-  capaTexto: "Fruits",
+  capa: "assets/img/fruits/capa.jpg",
+  capaAlt: "Variety of colorful fresh fruits: strawberries, blueberries, watermelon, kiwi, pomegranate, grapes and more",
 
   secoes: [
     {
