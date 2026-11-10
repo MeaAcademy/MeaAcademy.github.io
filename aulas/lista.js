@@ -8,10 +8,12 @@ MEA.lista = [
   "week-3",
   "week-16-ciclo-4",
   "fruits",
+  "conversacao",
   // Espanhol
   "es-week-1-ciclo-1",
   "es-week-1-pt-2",
   "es-week-3",
   "es-week-16-ciclo-4",
   "es-tilde",
+  "es-conversacao",
 ];
