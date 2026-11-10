@@ -162,13 +162,13 @@
 
     /* fichas com figura: clique para ouvir; o botão esconde as palavras para adivinhar */
     fichas: (b) => `<div class="fichas-wrap">
-      <button class="btn" type="button" data-adivinhar aria-pressed="false">${MEA.icone("olho")}<span>Esconder as palavras para adivinhar</span></button>
+      <button class="btn" type="button" data-adivinhar aria-pressed="false">${MEA.icone("olho")}<span>${esc(b.rotuloAdivinhar || "Esconder as palavras para adivinhar")}</span></button>
       <ul class="fichas">${b.itens.map((x) => `<li><button type="button" class="ficha" data-falar="${esc(x.en)}" aria-label="${esc(x.en)} – ${esc(x.pt)}">
-        <span class="emoji" aria-hidden="true">${esc(x.emoji)}</span><span class="palavra"><strong lang="${idioma}">${esc(x.en)}</strong><span class="pt-ficha">${esc(x.pt)}</span></span></button></li>`).join("")}</ul></div>`,
+        ${x.emoji ? `<span class="emoji" aria-hidden="true">${esc(x.emoji)}</span>` : ""}<span class="palavra"><strong lang="${idioma}">${esc(x.en)}</strong><span class="pt-ficha">${esc(x.pt)}</span></span></button></li>`).join("")}</ul></div>`,
 
     /* jogo: figura + pergunta, clique para ver a resposta */
     adivinhe: (b) => `<ul class="adivinhe">${b.itens.map((x) => `<li><button type="button" class="carta" data-revelar data-falar="${esc(x.falar || x.resposta)}" aria-label="${esc(x.pergunta)} Clique para ver a resposta">
-      <span class="emoji" aria-hidden="true">${esc(x.emoji)}</span><span class="perg" lang="${idioma}">${esc(x.pergunta)}</span>
+      ${x.emoji ? `<span class="emoji" aria-hidden="true">${esc(x.emoji)}</span>` : ""}<span class="perg" lang="${idioma}">${esc(x.pergunta)}</span>
       <span class="resp" lang="${idioma}">${esc(x.resposta)}</span><span class="dica-clique">${esc(b.rotuloClique || "Toque para ver a resposta")}</span></button></li>`).join("")}</ul>`,
 
     pronuncia: (b) => `<ul class="pronuncia">${b.itens.map((x) => `<li><span class="pr-en" lang="${idioma}">${esc(x.en)}</span><span class="pr-guia">${esc(x.guia)}</span>${botaoOuvir(x.en)}</li>`).join("")}</ul>`,
@@ -181,7 +181,7 @@
     grupos: (b) => `<div class="grupos">${b.grupos.map((g) => `<div class="grupo"><h3>${esc(g.titulo)}</h3>
       <ul>${g.itens.map((it) => `<li><button type="button" data-falar="${esc(it.en)}" aria-label="Ouvir: ${esc(it.en)}"><span class="en" lang="${idioma}">${esc(it.en)}</span> <span class="pt">${esc(it.pt)}</span>${MEA.icone("som")}</button></li>`).join("")}</ul></div>`).join("")}</div>`,
 
-    chave: (b) => `<div class="chave ${b.estilo || ""}"><h3>${esc(b.titulo)}</h3><p>${esc(b.texto)}</p></div>`,
+    chave: (b) => `<div class="chave ${b.estilo || ""}"><h3>${esc(b.titulo)}</h3>${b.texto ? `<p>${esc(b.texto)}</p>` : ""}</div>`,
 
     frases: (b) => `<div class="frases ${b.estilo || ""}">
       ${b.titulo ? `<h3>${esc(b.titulo)}${b.tituloPt ? `<span class="titulo-pt">${esc(b.tituloPt)}</span>` : ""}</h3>` : ""}
@@ -260,7 +260,7 @@
     const feitos = new Set(pref.get("feito." + aula.id, []));
 
     document.getElementById("capa").innerHTML = `
-      <div class="capa-img">${aula.capaEmoji ? `<div class="capa-emoji" aria-hidden="true">${esc(aula.capaEmoji)}</div>` : `<img src="${esc(aula.capa)}" alt="${esc(aula.capaAlt || "")}">`}</div>
+      <div class="capa-img">${aula.capaTexto ? `<div class="capa-emoji" aria-hidden="true">${esc(aula.capaTexto)}</div>` : `<img src="${esc(aula.capa)}" alt="${esc(aula.capaAlt || "")}">`}</div>
       <div class="capa-txt">
         <div class="curso">${esc(aula.curso)}</div>
         <div class="selos"><span class="selo">${MEA.icone("calendario")}${esc(aula.semana)}</span>${aula.ciclo ? `<span class="selo contorno">${esc(aula.ciclo)}</span>` : ""}</div>
@@ -305,7 +305,7 @@
       const g = e.target.closest("[data-adivinhar]");
       if (g) { const w = g.closest(".fichas-wrap"); const on = !w.classList.contains("escondido"); w.classList.toggle("escondido", on);
         w.querySelectorAll(".ficha").forEach((f) => f.classList.remove("vista")); g.setAttribute("aria-pressed", on);
-        g.querySelector("span").textContent = on ? "Mostrar todas as palavras" : "Esconder as palavras para adivinhar"; return; }
+        const sp = g.querySelector("span"); g.dataset.rotulo = g.dataset.rotulo || sp.textContent; sp.textContent = on ? "Mostrar todas as palavras" : g.dataset.rotulo; return; }
       const fi = e.target.closest(".escondido .ficha");
       if (fi) fi.classList.add("vista");
       const o = e.target.closest("[data-falar]");
@@ -378,7 +378,7 @@
       grade.innerHTML = vis.length ? vis.map((a) => {
         const feitos = pref.get("feito." + a.id, []).length;
         return `<a class="aula-card" href="aula.html?id=${encodeURIComponent(a.id)}">
-          ${a.capaEmoji ? `<div class="card-emoji" aria-hidden="true">${esc(a.capaEmoji)}</div>` : `<img src="${esc(a.capa)}" alt="" loading="lazy">`}
+          ${a.capaTexto ? `<div class="card-emoji" aria-hidden="true">${esc(a.capaTexto)}</div>` : `<img src="${esc(a.capa)}" alt="" loading="lazy">`}
           <div class="corpo">
             <div class="selos"><span class="selo">${esc(a.semana)}</span>${a.ciclo ? `<span class="selo contorno">${esc(a.ciclo)}</span>` : ""}</div>
             <h2>${esc(a.titulo)}</h2>

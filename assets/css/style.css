@@ -406,3 +406,13 @@ body.modo-estudo .pt::after { content: ""; }
 .chave.emojis p { font-size: 2.2rem; letter-spacing: .15em; }
 .pr-guia { white-space: normal; overflow-wrap: anywhere; }
 .capa-emoji, .card-emoji { color: #fdf6e8; }
+
+/* capas tipográficas (sem foto) */
+.capa-emoji, .card-emoji { font-family: var(--fonte-titulo); font-weight: 600; letter-spacing: .04em; }
+.capa-emoji { font-size: clamp(3rem, 7vw, 5.5rem); }
+/* fichas sem figura: a palavra é o destaque; no modo adivinhar some o idioma estudado */
+.ficha .palavra strong { font-size: 1.2rem; }
+.ficha { border-top: 4px solid var(--acento); }
+.escondido .ficha:not(.vista) .palavra { visibility: visible; }
+.escondido .ficha:not(.vista) .palavra strong { visibility: hidden; }
+.carta { border-top: 4px solid var(--acento); padding-top: 20px; }

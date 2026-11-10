@@ -1,16 +1,15 @@
 /*
-  English Lesson: Fruits 🍎 — aula particular (aluno de 12 anos, nível A1)
+  English Lesson: Fruits — aula particular (aluno de 12 anos, nível A1)
   Conteúdo transcrito fielmente do texto enviado pela professora.
-  Os emojis das fichas e do jogo servem de figura para cada fruta.
 */
 MEA.registrarAula({
   id: "fruits",
   curso: "English Lesson",
   semana: "Beginner (A1)",
   ciclo: "45 minutes",
-  titulo: "Fruits 🍎",
+  titulo: "Fruits",
   subtitulo: "Vocabulary, Speaking & Fun Activities",
-  capaEmoji: "🍓 🍌 🍉\n🍍 🍇",
+  capaTexto: "Fruits",
 
   secoes: [
     {
@@ -40,7 +39,7 @@ MEA.registrarAula({
       titulo: "Welcome!",
       icone: "estrela",
       blocos: [
-        { tipo: "chave", estilo: "emojis", titulo: "Today's topic: FRUITS!", texto: "🍓 🍌 🍉 🍍 🍇" },
+        { tipo: "chave", titulo: "Today's topic: FRUITS!" },
         { tipo: "pares", titulo: "Warm-up questions:", itens: [
           { en: "Do you like fruits?" },
           { en: "What is your favorite fruit?" },
@@ -57,10 +56,10 @@ MEA.registrarAula({
       blocos: [
         { tipo: "texto", texto: "Look at the pictures and guess the fruit!" },
         { tipo: "adivinhe", itens: [
-          { emoji: "🍌", pergunta: "What is it?", resposta: "It is a banana!" },
-          { emoji: "🍎", pergunta: "What is it?", resposta: "It is an apple!" },
-          { emoji: "🍉", pergunta: "What is it?", resposta: "It is a watermelon!" },
-          { emoji: "🍓", pergunta: "What is it?", resposta: "It is a strawberry!" }
+          { pergunta: "What is it?", resposta: "It is a banana!" },
+          { pergunta: "What is it?", resposta: "It is an apple!" },
+          { pergunta: "What is it?", resposta: "It is a watermelon!" },
+          { pergunta: "What is it?", resposta: "It is a strawberry!" }
         ]},
         { tipo: "pares", titulo: "Useful expression:", itens: [
           { en: "“What is this?”" },
@@ -75,22 +74,22 @@ MEA.registrarAula({
       titulo: "Fruit Vocabulary",
       icone: "lista",
       blocos: [
-        { tipo: "fichas", itens: [
-          { emoji: "🍎", en: "Apple", pt: "Maçã" },
-          { emoji: "🍌", en: "Banana", pt: "Banana" },
-          { emoji: "🍓", en: "Strawberry", pt: "Morango" },
-          { emoji: "🍉", en: "Watermelon", pt: "Melancia" },
-          { emoji: "🍊", en: "Orange", pt: "Laranja" },
-          { emoji: "🍍", en: "Pineapple", pt: "Abacaxi" },
-          { emoji: "🍇", en: "Grapes", pt: "Uvas" },
-          { emoji: "🥭", en: "Mango", pt: "Manga" },
-          { emoji: "🍐", en: "Pear", pt: "Pera" },
-          { emoji: "🍑", en: "Peach", pt: "Pêssego" },
-          { emoji: "🍒", en: "Cherry", pt: "Cereja" },
-          { emoji: "🍋", en: "Lemon", pt: "Limão" },
-          { emoji: "🥥", en: "Coconut", pt: "Coco" },
-          { emoji: "🥝", en: "Kiwi", pt: "Kiwi" },
-          { emoji: "🫐", en: "Blueberry", pt: "Mirtilo" }
+        { tipo: "fichas", rotuloAdivinhar: "Esconder o inglês para adivinhar", itens: [
+          { en: "Apple", pt: "Maçã" },
+          { en: "Banana", pt: "Banana" },
+          { en: "Strawberry", pt: "Morango" },
+          { en: "Watermelon", pt: "Melancia" },
+          { en: "Orange", pt: "Laranja" },
+          { en: "Pineapple", pt: "Abacaxi" },
+          { en: "Grapes", pt: "Uvas" },
+          { en: "Mango", pt: "Manga" },
+          { en: "Pear", pt: "Pera" },
+          { en: "Peach", pt: "Pêssego" },
+          { en: "Cherry", pt: "Cereja" },
+          { en: "Lemon", pt: "Limão" },
+          { en: "Coconut", pt: "Coco" },
+          { en: "Kiwi", pt: "Kiwi" },
+          { en: "Blueberry", pt: "Mirtilo" }
         ]},
         { tipo: "dica", rotulo: "Teacher's tip:", texto: "Use colorful pictures of each fruit. Show the picture first and let the student guess before revealing the English word." }
       ]
@@ -133,12 +132,12 @@ MEA.registrarAula({
       blocos: [
         { tipo: "texto", texto: "What color is the fruit?" },
         { tipo: "cores", itens: [
-          { emoji: "🍌", cores: ["#f2c94c"], en: "A banana is yellow." },
-          { emoji: "🍎", cores: ["#d64545", "#6fbf4a"], en: "An apple can be red or green." },
-          { emoji: "🍓", cores: ["#d64545"], en: "A strawberry is red." },
-          { emoji: "🍉", cores: ["#3f9a3f", "#e0484f"], en: "A watermelon is green and red." },
-          { emoji: "🍊", cores: ["#f28c28"], en: "An orange is orange." },
-          { emoji: "🫐", cores: ["#4a6fd6"], en: "A blueberry is blue." }
+          { cores: ["#f2c94c"], en: "A banana is yellow." },
+          { cores: ["#d64545", "#6fbf4a"], en: "An apple can be red or green." },
+          { cores: ["#d64545"], en: "A strawberry is red." },
+          { cores: ["#3f9a3f", "#e0484f"], en: "A watermelon is green and red." },
+          { cores: ["#f28c28"], en: "An orange is orange." },
+          { cores: ["#4a6fd6"], en: "A blueberry is blue." }
         ]},
         { tipo: "paleta", itens: [
           { en: "Red", cor: "#d64545" }, { en: "Yellow", cor: "#f2c94c" }, { en: "Green", cor: "#4fae4a" },

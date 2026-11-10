@@ -41,7 +41,7 @@ MEA.registrarAula({
         { tipo: "bilingue",
           en: ["Where do you want to go? What do you want to achieve while you are on the MEA journey?", "It is ok to change the destination in the middle of the journey. Now you will take another path."],
           pt: ["Para onde você quer ir? O que você quer alcançar enquanto estiver na jornada MEA?", "Tudo bem mudar o destino no meio da jornada. Agora você vai seguir outro caminho."] },
-        { tipo: "dica", rotulo: "🧠 Extra pedagógico:", texto: "Seu cérebro aprende melhor quando tem um destino claro. Your brain learns better when it has a clear destination." }
+        { tipo: "dica", rotulo: "Extra pedagógico:", texto: "Seu cérebro aprende melhor quando tem um destino claro. Your brain learns better when it has a clear destination." }
       ]
     },
 
@@ -74,7 +74,7 @@ MEA.registrarAula({
           { icone: "caixasom", titulo: "Fonética", texto: "Entender a fonética básica das letras e palavras" },
           { icone: "aperto", titulo: "Saudações", texto: "Praticar saudações e apresentações cotidianas" }
         ]},
-        { tipo: "dica", rotulo: "🧠 Lembre-se:", texto: "Pequenos alvos criam consistência. Small goals create consistency." }
+        { tipo: "dica", rotulo: "Lembre-se:", texto: "Pequenos alvos criam consistência. Small goals create consistency." }
       ]
     },
 

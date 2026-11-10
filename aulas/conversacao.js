@@ -436,14 +436,14 @@ MEA.registrarAula({
       blocos: [
         { tipo: "texto", texto: "Think of your answer first. Then tap the card to see one possible answer." },
         { tipo: "adivinhe", rotuloClique: "Tap to see an answer", itens: [
-          { emoji: "🤝", pergunta: "You want to start talking to someone at a party.", resposta: "Hi, I don't think we've met. I'm…" },
-          { emoji: "🤔", pergunta: "You need time to think about a question.", resposta: "That's a good question. Let me think…" },
-          { emoji: "🙋", pergunta: "You want to add an idea in a meeting.", resposta: "Sorry to interrupt, but can I add something?" },
-          { emoji: "🙅", pergunta: "You disagree with your boss.", resposta: "I see what you mean, but I see it differently." },
-          { emoji: "😕", pergunta: "You didn't understand the explanation.", resposta: "Could you give me an example?" },
-          { emoji: "😢", pergunta: "Your friend lost their job.", resposta: "That must be really hard. I'm here if you need anything." },
-          { emoji: "📞", pergunta: "On a call, the audio stops.", resposta: "Sorry, you're breaking up. Can you hear me now?" },
-          { emoji: "🚪", pergunta: "You need to leave the conversation.", resposta: "Well, I should get going. It was really nice talking to you!" }
+          { pergunta: "You want to start talking to someone at a party.", resposta: "Hi, I don't think we've met. I'm…" },
+          { pergunta: "You need time to think about a question.", resposta: "That's a good question. Let me think…" },
+          { pergunta: "You want to add an idea in a meeting.", resposta: "Sorry to interrupt, but can I add something?" },
+          { pergunta: "You disagree with your boss.", resposta: "I see what you mean, but I see it differently." },
+          { pergunta: "You didn't understand the explanation.", resposta: "Could you give me an example?" },
+          { pergunta: "Your friend lost their job.", resposta: "That must be really hard. I'm here if you need anything." },
+          { pergunta: "On a call, the audio stops.", resposta: "Sorry, you're breaking up. Can you hear me now?" },
+          { pergunta: "You need to leave the conversation.", resposta: "Well, I should get going. It was really nice talking to you!" }
         ]},
         { tipo: "lista", titulo: "Your speaking plan for this week:", numerada: true, itens: [
           "Shadowing: play a dialogue from this lesson and speak at the same time, copying the rhythm and intonation.",

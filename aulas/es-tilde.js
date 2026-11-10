@@ -11,7 +11,7 @@ MEA.registrarAula({
   titulo: "La tilde y los signos del español",
   subtitulo: "Por que, quando e onde usar: tilde, ¿ ¡, ñ e ü",
   resumo: "Entenda de uma vez por todas onde vai o acento em espanhol, por que ele muda o sentido das palavras e como usar os sinais de abertura ¿ e ¡.",
-  capaEmoji: "á é í ó ú\n¿ ¡ ñ ü",
+  capaTexto: "á é í ó ú\n¿ ¡ ñ ü",
 
   secoes: [
     {
@@ -211,20 +211,20 @@ MEA.registrarAula({
       blocos: [
         { tipo: "texto", texto: "Pense na regra antes de tocar: que tipo de palavra é? Em que letra termina?" },
         { tipo: "adivinhe", itens: [
-          { emoji: "✏️", pergunta: "cancion", resposta: "canción · aguda em -n", falar: "canción" },
-          { emoji: "✏️", pergunta: "arbol", resposta: "árbol · llana em -l", falar: "árbol" },
-          { emoji: "✏️", pergunta: "musica", resposta: "música · esdrújula", falar: "música" },
-          { emoji: "✏️", pergunta: "reloj", resposta: "reloj · sem tilde", falar: "reloj" },
-          { emoji: "✏️", pergunta: "examen", resposta: "examen · sem tilde", falar: "examen" },
-          { emoji: "✏️", pergunta: "telefono", resposta: "teléfono · esdrújula", falar: "teléfono" },
-          { emoji: "✏️", pergunta: "pais", resposta: "país · hiato", falar: "país" },
-          { emoji: "✏️", pergunta: "fue", resposta: "fue · monossílabo", falar: "fue" }
+          { pergunta: "cancion", resposta: "canción · aguda em -n", falar: "canción" },
+          { pergunta: "arbol", resposta: "árbol · llana em -l", falar: "árbol" },
+          { pergunta: "musica", resposta: "música · esdrújula", falar: "música" },
+          { pergunta: "reloj", resposta: "reloj · sem tilde", falar: "reloj" },
+          { pergunta: "examen", resposta: "examen · sem tilde", falar: "examen" },
+          { pergunta: "telefono", resposta: "teléfono · esdrújula", falar: "teléfono" },
+          { pergunta: "pais", resposta: "país · hiato", falar: "país" },
+          { pergunta: "fue", resposta: "fue · monossílabo", falar: "fue" }
         ]},
         { tipo: "adivinhe", itens: [
-          { emoji: "💬", pergunta: "como estas", resposta: "¿Cómo estás?" },
-          { emoji: "💬", pergunta: "que bonito", resposta: "¡Qué bonito!" },
-          { emoji: "💬", pergunta: "tu tienes tu libro", resposta: "Tú tienes tu libro." },
-          { emoji: "💬", pergunta: "si, se donde esta", resposta: "Sí, sé dónde está." }
+          { pergunta: "como estas", resposta: "¿Cómo estás?" },
+          { pergunta: "que bonito", resposta: "¡Qué bonito!" },
+          { pergunta: "tu tienes tu libro", resposta: "Tú tienes tu libro." },
+          { pergunta: "si, se donde esta", resposta: "Sí, sé dónde está." }
         ]}
       ]
     },

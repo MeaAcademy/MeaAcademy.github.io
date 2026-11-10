@@ -43,7 +43,7 @@ MEA.registrarAula({
         { tipo: "bilingue",
           en: ["¿A dónde quieres ir? ¿Qué quieres lograr mientras estás en el camino MEA?", "Está bien cambiar el destino a mitad del camino. Ahora tomarás otro rumbo."],
           pt: ["Para onde você quer ir? O que você quer alcançar enquanto estiver na jornada MEA?", "Tudo bem mudar o destino no meio da jornada. Agora você vai seguir outro caminho."] },
-        { tipo: "dica", rotulo: "🧠 Extra pedagógico:", texto: "Seu cérebro aprende melhor quando tem um destino claro. Tu cerebro aprende mejor cuando tiene un destino claro." }
+        { tipo: "dica", rotulo: "Extra pedagógico:", texto: "Seu cérebro aprende melhor quando tem um destino claro. Tu cerebro aprende mejor cuando tiene un destino claro." }
       ]
     },
 
@@ -76,7 +76,7 @@ MEA.registrarAula({
           { icone: "caixasom", titulo: "Fonética", texto: "Entender a fonética básica das letras e palavras" },
           { icone: "aperto", titulo: "Saudações", texto: "Praticar saudações e apresentações cotidianas" }
         ]},
-        { tipo: "dica", rotulo: "🧠 Lembre-se:", texto: "Pequenos alvos criam consistência. Las metas pequeñas crean constancia." }
+        { tipo: "dica", rotulo: "Lembre-se:", texto: "Pequenos alvos criam consistência. Las metas pequeñas crean constancia." }
       ]
     },
 

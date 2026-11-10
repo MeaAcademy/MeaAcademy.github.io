@@ -438,14 +438,14 @@ MEA.registrarAula({
       blocos: [
         { tipo: "texto", texto: "Piensa primero tu respuesta. Después toca la tarjeta para ver una respuesta posible." },
         { tipo: "adivinhe", rotuloClique: "Toca para ver una respuesta", itens: [
-          { emoji: "🤝", pergunta: "Quieres hablar con alguien en una fiesta.", resposta: "Hola, creo que no nos conocemos. Soy…" },
-          { emoji: "🤔", pergunta: "Necesitas tiempo para pensar una pregunta.", resposta: "Buena pregunta. A ver…" },
-          { emoji: "🙋", pergunta: "Quieres añadir una idea en una reunión.", resposta: "Perdona que te interrumpa, pero ¿puedo añadir algo?" },
-          { emoji: "🙅", pergunta: "No estás de acuerdo con tu jefe.", resposta: "Entiendo lo que dice, pero yo lo veo de otra manera." },
-          { emoji: "😕", pergunta: "No entendiste la explicación.", resposta: "¿Me pones un ejemplo?" },
-          { emoji: "😢", pergunta: "Tu amigo perdió su trabajo.", resposta: "Debe de ser muy difícil. Cuenta conmigo para lo que necesites." },
-          { emoji: "📞", pergunta: "En una llamada, se corta el audio.", resposta: "Perdona, se corta. ¿Me oyes ahora?" },
-          { emoji: "🚪", pergunta: "Tienes que terminar la conversación.", resposta: "Bueno, me tengo que ir. ¡Fue un placer hablar contigo!" }
+          { pergunta: "Quieres hablar con alguien en una fiesta.", resposta: "Hola, creo que no nos conocemos. Soy…" },
+          { pergunta: "Necesitas tiempo para pensar una pregunta.", resposta: "Buena pregunta. A ver…" },
+          { pergunta: "Quieres añadir una idea en una reunión.", resposta: "Perdona que te interrumpa, pero ¿puedo añadir algo?" },
+          { pergunta: "No estás de acuerdo con tu jefe.", resposta: "Entiendo lo que dice, pero yo lo veo de otra manera." },
+          { pergunta: "No entendiste la explicación.", resposta: "¿Me pones un ejemplo?" },
+          { pergunta: "Tu amigo perdió su trabajo.", resposta: "Debe de ser muy difícil. Cuenta conmigo para lo que necesites." },
+          { pergunta: "En una llamada, se corta el audio.", resposta: "Perdona, se corta. ¿Me oyes ahora?" },
+          { pergunta: "Tienes que terminar la conversación.", resposta: "Bueno, me tengo que ir. ¡Fue un placer hablar contigo!" }
         ]},
         { tipo: "lista", titulo: "Tu plan de conversación para esta semana:", numerada: true, itens: [
           "Shadowing: pon un diálogo de esta clase y habla al mismo tiempo, copiando el ritmo y la entonación.",
