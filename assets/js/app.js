@@ -133,7 +133,7 @@
     if (!("speechSynthesis" in window)) { alert("Seu navegador não tem leitura em voz alta."); return; }
     speechSynthesis.cancel();
     document.querySelectorAll(".ouvir.tocando").forEach((b) => b.classList.remove("tocando"));
-    const limpo = texto.replace(/\[([^\]]+)\]/g, "$1").replace(/…/g, "...");
+    const limpo = texto.replace(/\[([^\]]+)\]/g, "$1").replace(/…/g, "...").replace(/[↗↘✓✗|]/g, " ");
     const u = new SpeechSynthesisUtterance(limpo);
     u.lang = IDI().voz; u.rate = pref.get("velocidade", 0.9); if (vozEn) u.voice = vozEn;
     if (botao) { botao.classList.add("tocando"); }
@@ -169,7 +169,7 @@
     /* jogo: figura + pergunta, clique para ver a resposta */
     adivinhe: (b) => `<ul class="adivinhe">${b.itens.map((x) => `<li><button type="button" class="carta" data-revelar data-falar="${esc(x.falar || x.resposta)}" aria-label="${esc(x.pergunta)} Clique para ver a resposta">
       <span class="emoji" aria-hidden="true">${esc(x.emoji)}</span><span class="perg" lang="${idioma}">${esc(x.pergunta)}</span>
-      <span class="resp" lang="${idioma}">${esc(x.resposta)}</span><span class="dica-clique">Toque para ver a resposta</span></button></li>`).join("")}</ul>`,
+      <span class="resp" lang="${idioma}">${esc(x.resposta)}</span><span class="dica-clique">${esc(b.rotuloClique || "Toque para ver a resposta")}</span></button></li>`).join("")}</ul>`,
 
     pronuncia: (b) => `<ul class="pronuncia">${b.itens.map((x) => `<li><span class="pr-en" lang="${idioma}">${esc(x.en)}</span><span class="pr-guia">${esc(x.guia)}</span>${botaoOuvir(x.en)}</li>`).join("")}</ul>`,
 
@@ -196,8 +196,8 @@
         ${it.icone ? `<span class="icone-bolha">${MEA.icone(it.icone)}</span>` : ""}
         ${it.titulo ? `<h3>${esc(it.titulo)}</h3>` : ""}
         ${it.subtitulo ? `<p class="subtit">${esc(it.subtitulo)}</p>` : ""}
-        ${it.lista ? `<ul class="lista-falar">${it.lista.map((x) => `<li><span lang="${idioma}">${esc(x)}</span>${botaoOuvir(x)}</li>`).join("")}</ul>` : ""}
         ${it.texto ? `<p>${esc(it.texto)}</p>` : ""}
+        ${it.lista ? `<ul class="lista-falar">${it.lista.map((x) => `<li><span lang="${idioma}">${esc(x)}</span>${botaoOuvir(x)}</li>`).join("")}</ul>` : ""}
         ${it.en ? frase(it) : ""}
         ${it.nota ? `<p class="nota">${esc(it.nota)}</p>` : ""}
         </div>
@@ -215,7 +215,7 @@
       ${b.falas.map((f) => `<div class="fala ${f.lado === "b" ? "b" : ""}">
         <div class="quem"><span class="avatar" aria-hidden="true">${esc(f.quem.charAt(0))}</span>${esc(f.quem)}</div>
         ${frase(f)}</div>`).join("")}
-      <div class="dialogo-acoes"><button class="btn" type="button" data-dialogo>${MEA.icone("play")}<span>Ouvir diálogo completo</span></button></div>
+      <div class="dialogo-acoes"><button class="btn" type="button" data-dialogo>${MEA.icone("play")}<span>${esc(b.rotuloBotao || "Ouvir diálogo completo")}</span></button></div>
     </div>`,
 
     passos: (b) => `<ol class="passos ${b.estilo || ""}">${b.itens.map((it, i) => `
