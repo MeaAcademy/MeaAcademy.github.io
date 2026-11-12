@@ -164,7 +164,7 @@
     fichas: (b) => `<div class="fichas-wrap">
       <button class="btn" type="button" data-adivinhar aria-pressed="false">${MEA.icone("olho")}<span>${esc(b.rotuloAdivinhar || "Esconder as palavras para adivinhar")}</span></button>
       <ul class="fichas">${b.itens.map((x) => `<li><button type="button" class="ficha" data-falar="${esc(x.en)}" aria-label="${esc(x.en)} – ${esc(x.pt)}">
-        ${x.emoji ? `<span class="emoji" aria-hidden="true">${esc(x.emoji)}</span>` : ""}<span class="palavra"><strong lang="${idioma}">${esc(x.en)}</strong><span class="pt-ficha">${esc(x.pt)}</span></span></button></li>`).join("")}</ul></div>`,
+        ${x.cor ? `<span class="amostra" aria-hidden="true" style="background:${esc(x.cor)}"></span>` : ""}${x.emoji ? `<span class="emoji" aria-hidden="true">${esc(x.emoji)}</span>` : ""}<span class="palavra"><strong lang="${idioma}">${esc(x.en)}</strong><span class="pt-ficha">${esc(x.pt)}</span></span></button></li>`).join("")}</ul></div>`,
 
     /* jogo: figura + pergunta, clique para ver a resposta */
     adivinhe: (b) => `<ul class="adivinhe">${b.itens.map((x) => `<li><button type="button" class="carta" data-revelar data-falar="${esc(x.falar || x.resposta)}" aria-label="${esc(x.pergunta)} Clique para ver a resposta">

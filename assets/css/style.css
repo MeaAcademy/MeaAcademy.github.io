@@ -416,3 +416,4 @@ body.modo-estudo .pt::after { content: ""; }
 .escondido .ficha:not(.vista) .palavra { visibility: visible; }
 .escondido .ficha:not(.vista) .palavra strong { visibility: hidden; }
 .carta { border-top: 4px solid var(--acento); padding-top: 20px; }
+.amostra { width: 100%; height: 56px; border-radius: 10px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); display: block; }

@@ -12,6 +12,8 @@ MEA.lista = [
   "dias-meses-anos",
   "numeros",
   "ordinais",
+  "verbo-to-be",
+  "cores",
   // Espanhol
   "es-week-1-ciclo-1",
   "es-week-1-pt-2",
@@ -22,4 +24,6 @@ MEA.lista = [
   "es-dias-meses-anos",
   "es-numeros",
   "es-ordinais",
+  "es-ser-estar",
+  "es-cores",
 ];
